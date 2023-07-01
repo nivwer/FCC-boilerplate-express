@@ -12,6 +12,15 @@ let dotenv = require('dotenv').config()
 //  });
 
 
+
+// Solution 6:
+app.use((req, res, next) => {
+  const logMessage = `${req.method} ${req.path} - ${req.ip}`;
+  console.log(logMessage);
+  next();
+})
+
+
 // Solution 3:
 app.get('/', (req, res) => {
   const Path = __dirname + "/views/index.html"
@@ -21,7 +30,7 @@ app.get('/', (req, res) => {
 // Solution 4:
 app.use('/public', express.static(__dirname + "/public"));
 
-// Solution 5:
+// Solution 5/6:
 app.get('/json', (req, res) => {
   let message = "Hello json";
 
@@ -31,6 +40,17 @@ app.get('/json', (req, res) => {
 
   res.json({ "message": message })
 })
+
+
+
+// Solution 7:
+app.get('/now', (req, res, next) => {
+  req.time = new Date().toString();
+  next();
+}, (req, res) => {
+  res.json({ time: req.time });
+});
+
 
 
 
