@@ -2,6 +2,10 @@ let express = require('express');
 let app = express();
 let dotenv = require('dotenv').config()
 
+// Solution 11:
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // Solution 1:
 // console.log('Hello World')
 
