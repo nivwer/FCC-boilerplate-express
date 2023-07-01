@@ -13,7 +13,7 @@ let dotenv = require('dotenv').config()
 
 
 
-// Solution 6:
+// Solution 7:
 app.use((req, res, next) => {
   const logMessage = `${req.method} ${req.path} - ${req.ip}`;
   console.log(logMessage);
@@ -43,7 +43,7 @@ app.get('/json', (req, res) => {
 
 
 
-// Solution 7:
+// Solution 8:
 app.get('/now', (req, res, next) => {
   req.time = new Date().toString();
   next();
